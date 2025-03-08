@@ -28,8 +28,11 @@ const Login = () => {
 
     if(name.length > 0 && lastname.length > 0 && email.length > 0 && password.length > 0 && confirmPassword.length > 0){
 
-      if(password === confirmPassword){
-        const formData = {
+      if (password !== confirmPassword) {
+        toast.error("Passwords don't match"); // ✅ Now this will show correctly
+        return; // ❗ Prevent API request if passwords don't match
+      }
+      const formData = {
           username: name + " " + lastname,
           email,
           password
@@ -39,13 +42,13 @@ const Login = () => {
          toast.success("Registration successfull");
          navigate("/login");
        }catch(err){
-         toast.error(err.message);
-       }
+        if (err.response && err.response.data && err.response.data.msg) {
+          toast.error(err.response.data.msg); // ✅ Shows only "Email already in use"       }
       }else{
         toast.error("Passwords don't match");
       }
+    }
     
-
     }else{
       toast.error("Please fill all inputs");
     }

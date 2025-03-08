@@ -25,10 +25,10 @@ const login = async (req, res) => {
 
       return res.status(200).json({ msg: "user logged in", token });
     } else {
-      return res.status(400).json({ msg: "Bad password" });
+      return res.status(400).json({ msg: "Wrong password" });
     }
   } else {
-    return res.status(400).json({ msg: "Bad credentails" });
+    return res.status(400).json({ msg: "Invalid email" });
   }
 };
 
@@ -59,8 +59,10 @@ const register = async (req, res) => {
       });
       await person.save();
       return res.status(201).json({ person });
-    }else{
-        return res.status(400).json({msg: "Please add all values in the request body"});
+    } else {
+      return res
+        .status(400)
+        .json({ msg: "Please add all values in the request body" });
     }
   } else {
     return res.status(400).json({ msg: "Email already in use" });

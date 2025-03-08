@@ -35,8 +35,11 @@ const Login = () => {
         toast.success("Login successfull");
         navigate("/dashboard");
       } catch (err) {
-        console.log(err);
-        toast.error(err.message);
+        if (err.response && err.response.data && err.response.data.msg) {
+          toast.error(err.response.data.msg); // ✅ Shows the backend error message like "Bad credentials" or "Bad password"
+        } else {
+          toast.error("Something went wrong. Please try again!"); // ✅ Fallback message
+        }
       }
     } else {
       toast.error("Please fill all inputs");

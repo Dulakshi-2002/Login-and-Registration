@@ -80,7 +80,7 @@ const Login = () => {
           </div>
           <div className="login-center">
             <h2>Welcome back!</h2>
-            <p>Please enter your details</p>
+            <p>Enter your username and password to log in</p>
             <form onSubmit={handleLoginSubmit}>
             <div className="input-container">
             <input 

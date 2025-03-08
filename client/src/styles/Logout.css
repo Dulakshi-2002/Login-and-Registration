@@ -7,4 +7,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url('../assets/dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black; /* Ensuring text is visible on any background */
+
 }

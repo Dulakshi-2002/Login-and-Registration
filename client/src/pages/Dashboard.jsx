@@ -37,8 +37,8 @@ const Dashboard = () => {
 
   return (
     <div className='dashboard-main'>
-      <h1>Dashboard</h1>
-      <p>Hi { data.msg }! { data.luckyNumber }</p>
+      <h1>Secure  Connect</h1>
+      <p>Hi { data.msg }! </p>
       <Link to="/logout" className="logout-button">Logout</Link>
     </div>
   )

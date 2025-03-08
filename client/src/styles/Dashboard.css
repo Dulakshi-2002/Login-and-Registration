@@ -1,41 +1,47 @@
-.dashboard-main{
-    font-size: 30px;
-    height: 100vh;
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.dashboard-main p{
-  font-size: 20px;
-  padding: 0 20px
-}
-
-.logout-button{
-    background: black;
-    color: white;
-    border: 3px solid black;
-    transition: background 1s linear 0ms;
-    transition: color 500ms linear 0ms;
-
-    width: 500px;
-    padding: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    border-radius: 30px;
-    font-weight: 600;
-    margin-top: 10px;
-
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-  }
-
+.dashboard-main {
+  font-size: 30px;
+  height: 100vh;
+  width: 100%;
   
-  .logout-button:hover{
-    color: #333;
-    background-color: white;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  background-image: url('../assets/dashboard.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black; /* Ensuring text is visible on any background */
+}
+
+.dashboard-main p {
+  font-size: 20px;
+  padding: 0 20px;
+  color: black; /* Light gray for better readability */
+}
+
+/* Blue Theme Button */
+.logout-button {
+  background: #007BFF; /* Royal Blue */
+  color: white;
+  border: 3px solid #0056b3; /* Darker blue border */
+  transition: background 0.5s ease, color 0.5s ease;
+
+  width: 500px;
+  padding: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Hover Effect */
+.logout-button:hover {
+  background: #0056b3; /* Darker Blue */
+  color: #ffffff;
+  border-color: #003d7a; /* Even darker border for depth */
+}

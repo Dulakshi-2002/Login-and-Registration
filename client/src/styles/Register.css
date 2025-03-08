@@ -3,22 +3,29 @@
     display: flex;
   }
   
-  .register-left{
+  .register-left {
     flex-grow: 1;
     height: 100vh;
-    background-color: #E9E9E9;
-  
+    background-color: #ADD8E6; /* Light blue background */
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 40%; /* Take half of the screen */
+    padding: 0; /* Remove any padding */
+    margin: 0;  /* Remove any margin */
+
   }
   
   .register-left img{
-    width: 400px;
+  background-size: cover;
+  height: 100vh;
+  width: 100%; /* Ensure the image covers the whole container */
+  object-fit: cover; /* This will make the image cover the area without leaving gaps */
+  
   }
   
   .register-right{
-  
+    background-color:#E6F0FF;;
     height: 100vh;
   
     flex-grow: 1;

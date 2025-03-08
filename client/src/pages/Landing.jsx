@@ -7,7 +7,7 @@ const Landing = () => {
   return (
     <div className='landing-main'>
       
-      <h1>Welcome to Technova</h1>
+      <h1>Welcome to Secure  Connect</h1>
       <p>Join us and start your journey today!</p>
       <div className="button-container">
         <Link to="/login" className="landing-login-button">Login</Link>

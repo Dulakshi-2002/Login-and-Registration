@@ -12,13 +12,13 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: white; /* Ensuring text is visible on any background */
+  color: black; /* Ensuring text is visible on any background */
 }
 
 .dashboard-main p {
   font-size: 20px;
   padding: 0 20px;
-  color: #D3D3D3; /* Light gray for better readability */
+  color: black; /* Light gray for better readability */
 }
 
 /* Blue Theme Button */

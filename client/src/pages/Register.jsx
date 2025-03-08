@@ -463,7 +463,7 @@ const Register = () => {
         if (err.response && err.response.data && err.response.data.msg) {
           toast.error(err.response.data.msg); // ✅ Shows only "Email already in use"
         } else {
-          toast.error("Something went wrong");
+          toast.error("Password must be at least 8 characters long, contain an uppercase letter, and a special character. ");
         }
       }
     } else {

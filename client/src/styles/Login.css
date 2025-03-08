@@ -24,7 +24,7 @@
 .login-right {
   height: 100vh;
   flex-grow: 1;
-  background-color: #ADD8E6;; /* Optional background color for the right section */
+  background-color: #E6F0FF; /* Optional background color for the right section */
 }
 
 .login-right-container {

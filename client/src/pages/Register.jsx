@@ -44,14 +44,14 @@ const Login = () => {
        }catch(err){
         if (err.response && err.response.data && err.response.data.msg) {
           toast.error(err.response.data.msg); // ✅ Shows only "Email already in use"       }
-      }else{
+        }else{
         toast.error("Passwords don't match");
+        }
       }
-    }
     
-    }else{
+  }else{
       toast.error("Please fill all inputs");
-    }
+  }
 
 
   }

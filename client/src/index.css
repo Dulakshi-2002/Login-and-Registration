@@ -14,3 +14,30 @@ body{
   height: 100vh;
 
 }
+
+.password-input {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.password-strength-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+
+.password-strength-bar {
+  height: 5px;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
+
+.password-strength-indicator p {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+}

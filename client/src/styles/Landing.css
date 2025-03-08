@@ -17,8 +17,12 @@
 .landing-main h1,
 .landing-main p {
   position: relative;
-  z-index: 1; /* Ensure text appears above background */
+  z-index: 10; /* Ensure text appears above background */
   margin: 10px 0; /* Add spacing */
+}
+
+.landing-main h1 {
+  font-size: 3em; /* Increase the font size of h1 */
 }
 
 .button-container {

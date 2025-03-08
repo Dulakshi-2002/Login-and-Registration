@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/Landing.css";
-import landingImage from '../assets/qw.webp'; // Import the image
+
 
 const Landing = () => {
   return (

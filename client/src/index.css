@@ -41,3 +41,19 @@ body{
   font-size: 14px;
   font-family: "Poppins", sans-serif;
 }
+
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.input-error {
+  border: 1px solid red;
+}
+.general-error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+

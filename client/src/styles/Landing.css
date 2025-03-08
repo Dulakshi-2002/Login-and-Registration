@@ -1,62 +1,58 @@
-.landing-main{
-    font-size: 30px;
-    height: 100vh;
-    width: 100%;
+.landing-main {
+  position: relative;
+  text-align: center;
+  background-image: url('../assets/qw.webp'); /* Use the image as background */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Full height of the viewport */
+  color: white; /* Make text white for contrast */
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  padding: 20px;
 }
 
-.landing-login-button{
-    background: black;
-    color: white;
-    border: 3px solid black;
-    transition: background 1s linear 0ms;
-    transition: color 500ms linear 0ms;
+.landing-main h1,
+.landing-main p {
+  position: relative;
+  z-index: 1; /* Ensure text appears above background */
+  margin: 10px 0; /* Add spacing */
+}
 
-    width: 500px;
-    padding: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    border-radius: 30px;
-    font-weight: 600;
-    margin-top: 10px;
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+  z-index: 1; /* Ensure buttons appear above background */
+  margin-top: 20px; /* Space between text and buttons */
+}
 
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-  }
+.landing-login-button, .landing-register-button {
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-  .landing-register-button{
-    background: black;
-    color: white;
-    border: 3px solid black;
-    transition: background 1s linear 0ms;
-    transition: color 500ms linear 0ms;
+.landing-login-button {
+  background-color: #007bff;
+  color: white;
+}
 
-    width: 500px;
-    padding: 16px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 30px;
-    font-weight: 600;
-    margin-top: 10px;
+.landing-register-button {
+  background-color: #28a745;
+  color: white;
+}
 
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-  }
+.landing-login-button:hover {
+  background-color: #0056b3;
+}
 
-  
-  .landing-register-button:hover{
-    color: #333;
-    background-color: white;
-  }
-
-  .landing-login-button:hover{
-    color: #333;
-    background-color: white;
-  }
+.landing-register-button:hover {
+  background-color: #218838;
+}

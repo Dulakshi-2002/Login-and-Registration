@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "../assets/image.png";
 import Logo from "../assets/logo.png";
-import GoogleSvg from "../assets/icons8-google.svg";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa6";
 import "../styles/Register.css";
@@ -9,14 +8,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-
-
-const Login = () => {
-  const [ showPassword, setShowPassword ] = useState(false);
+const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const [ token, setToken ] = useState(JSON.parse(localStorage.getItem("auth")) || "");
-
-
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem("auth")) || "");
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
@@ -26,39 +21,38 @@ const Login = () => {
     let password = e.target.password.value;
     let confirmPassword = e.target.confirmPassword.value;
 
-    if(name.length > 0 && lastname.length > 0 && email.length > 0 && password.length > 0 && confirmPassword.length > 0){
-
-      if(password === confirmPassword){
-        const formData = {
-          username: name + " " + lastname,
-          email,
-          password
-        };
-        try{
-        const response = await axios.post("http://localhost:3000/api/v1/register", formData);
-         toast.success("Registration successfull");
-         navigate("/login");
-       }catch(err){
-         toast.error(err.message);
-       }
-      }else{
+    if (name.length > 0 && lastname.length > 0 && email.length > 0 && password.length > 0 && confirmPassword.length > 0) {
+      if (password !== confirmPassword) {
         toast.error("Passwords don't match");
+        return;
       }
-    
-
-    }else{
+      const formData = {
+        username: name + " " + lastname,
+        email,
+        password,
+      };
+      try {
+        const response = await axios.post("http://localhost:3000/api/v1/register", formData);
+        toast.success("Registration successful");
+        navigate("/login");
+      } catch (err) {
+        if (err.response && err.response.data && err.response.data.msg) {
+          toast.error(err.response.data.msg);
+        } else {
+          toast.error("An error occurred. Please try again.");
+        }
+      }
+    } else {
       toast.error("Please fill all inputs");
     }
-
-
-  }
+  };
 
   useEffect(() => {
-    if(token !== ""){
+    if (token !== "") {
       toast.success("You already logged in");
       navigate("/dashboard");
     }
-  }, []);
+  }, [token, navigate]);
 
   return (
     <div className="register-main">
@@ -74,25 +68,37 @@ const Login = () => {
             <h2>Welcome to our website!</h2>
             <p>Please enter your details</p>
             <form onSubmit={handleRegisterSubmit}>
-            <input type="text" placeholder="Name" name="name" required={true} />
-            <input type="text" placeholder="Lastname" name="lastname" required={true} />
+              <input type="text" placeholder="Name" name="name" required={true} />
+              <input type="text" placeholder="Lastname" name="lastname" required={true} />
               <input type="email" placeholder="Email" name="email" required={true} />
               <div className="pass-input-div">
-                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" required={true} />
-                {showPassword ? <FaEyeSlash onClick={() => {setShowPassword(!showPassword)}} /> : <FaEye onClick={() => {setShowPassword(!showPassword)}} />}
-                
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  name="password"
+                  required={true}
+                />
+                {showPassword ? (
+                  <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
+                ) : (
+                  <FaEye onClick={() => setShowPassword(!showPassword)} />
+                )}
               </div>
               <div className="pass-input-div">
-                <input type={showPassword ? "text" : "password"} placeholder="Confirm Password" name="confirmPassword" required={true} />
-                {showPassword ? <FaEyeSlash onClick={() => {setShowPassword(!showPassword)}} /> : <FaEye onClick={() => {setShowPassword(!showPassword)}} />}
-                
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  required={true}
+                />
+                {showPassword ? (
+                  <FaEyeSlash onClick={() => setShowPassword(!showPassword)} />
+                ) : (
+                  <FaEye onClick={() => setShowPassword(!showPassword)} />
+                )}
               </div>
               <div className="register-center-buttons">
                 <button type="submit">Sign Up</button>
-                <button type="submit">
-                  <img src={GoogleSvg} alt="" />
-                  Sign Up with Google
-                </button>
               </div>
             </form>
           </div>
@@ -106,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

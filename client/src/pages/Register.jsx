@@ -354,24 +354,18 @@ const Register = () => {
       if (err.response && err.response.data && err.response.data.msg) {
         // Handle API-specific errors
         const errorMsg = err.response.data.msg;
-        if (errorMsg.includes("Email already in use")) {
-          setErrors({
-            ...errors,
-            email: "Email already in use"
-          });
-        } else {
-          setErrors({
-            ...errors,
-            general: errorMsg
-          });
-        }
+       // Display specific backend errors as toasts
+      if (errorMsg.includes("Email already in use")) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Email is already in use"
+        }));
       } else {
-        // Handle generic errors
-        setErrors({
-          ...errors,
-          password: "Password must be at least 8 characters long, contain an uppercase letter, and a special character."
-        });
+        toast.error(errorMsg); // Shows other backend errors
       }
+    } else {
+      toast.error("Something went wrong. Please try again.");
+    }
     }
   };
 
@@ -474,10 +468,6 @@ const Register = () => {
               
               <div className="register-center-buttons">
                 <button type="submit">Sign Up</button>
-                <button type="submit">
-                  <img src={GoogleSvg} alt="" />
-                  Sign Up with Google
-                </button>
               </div>
             </form>
           </div>

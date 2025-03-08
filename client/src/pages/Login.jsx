@@ -13,11 +13,14 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [ token, setToken ] = useState(JSON.parse(localStorage.getItem("auth")) || "");
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({ email: "", password: "", general: "" });
 
 
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setErrors({ email: "", password: "", general: "" }); // Reset errors on new attempt
+
     let email = e.target.email.value;
     let password = e.target.password.value;
 
@@ -34,15 +37,27 @@ const Login = () => {
         localStorage.setItem('auth', JSON.stringify(response.data.token));
         toast.success("Login successfull");
         navigate("/dashboard");
-      } catch (err) {
+      }  catch (err) {
         if (err.response && err.response.data && err.response.data.msg) {
-          toast.error(err.response.data.msg); // ✅ Shows the backend error message like "Bad credentials" or "Bad password"
+          const errorMsg = err.response.data.msg;
+  
+          if (errorMsg.includes("Invalid email")) {
+            setErrors((prev) => ({ ...prev, email: "Invalid email or user does not exist" }));
+          } else if (errorMsg.includes("Wrong password")) {
+            setErrors((prev) => ({ ...prev, password: "Incorrect password. Try again." }));
+          } else {
+            setErrors((prev) => ({ ...prev, general: errorMsg }));
+          }
         } else {
-          toast.error("Something went wrong. Please try again!"); // ✅ Fallback message
+          toast.error("Something went wrong. Please try again!"); // Fallback for unexpected errors
         }
       }
     } else {
-      toast.error("Please fill all inputs");
+      setErrors((prev) => ({
+        ...prev,
+        email: email.length === 0 ? "Email is required" : "",
+        password: password.length === 0 ? "Password is required" : "",
+      }));
     }
   };
 
@@ -67,12 +82,21 @@ const Login = () => {
             <h2>Welcome back!</h2>
             <p>Please enter your details</p>
             <form onSubmit={handleLoginSubmit}>
-              <input type="email" placeholder="Email" name="email" />
+            <div className="input-container">
+            <input 
+              type="email" 
+              placeholder="Email" 
+              name="email" 
+              className={errors.email ? "input-error" : ""}
+            />
+            {errors.email && <div className="error-message">{errors.email}</div>}
+          </div>
               <div className="pass-input-div">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   name="password"
+                  className={errors.password ? "input-error" : ""}
                 />
                 {showPassword ? (
                   <FaEyeSlash
@@ -88,24 +112,11 @@ const Login = () => {
                   />
                 )}
               </div>
+              {errors.password && <div className="error-message">{errors.password}</div>}
 
-              <div className="login-center-options">
-                <div className="remember-div">
-                  <input type="checkbox" id="remember-checkbox" />
-                  <label htmlFor="remember-checkbox">
-                    Remember for 30 days
-                  </label>
-                </div>
-                <a href="#" className="forgot-pass-link">
-                  Forgot password?
-                </a>
-              </div>
+
               <div className="login-center-buttons">
                 <button type="submit">Log In</button>
-                <button type="submit">
-                  <img src={GoogleSvg} alt="" />
-                  Log In with Google
-                </button>
               </div>
             </form>
           </div>

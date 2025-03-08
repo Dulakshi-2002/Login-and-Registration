@@ -216,9 +216,14 @@ const Register = () => {
     let email = e.target.email.value;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     if(name.length > 0 && lastname.length > 0 && email.length > 0 && password.length > 0 && confirmPassword.length > 0){
 
       if(password === confirmPassword){
+=======
+    if (name.length > 0 && lastname.length > 0 && email.length > 0 && password.length > 0 && confirmPassword.length > 0) {
+      if (password === confirmPassword) {
+>>>>>>> Stashed changes
 =======
     if (name.length > 0 && lastname.length > 0 && email.length > 0 && password.length > 0 && confirmPassword.length > 0) {
       if (password === confirmPassword) {
@@ -228,6 +233,7 @@ const Register = () => {
           email,
           password
         };
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         try{
         const response = await axios.post("http://localhost:3000/api/v1/register", formData);
@@ -252,6 +258,20 @@ const Register = () => {
     if(token !== ""){
       toast.success("You already logged in");
       navigate("/dashboard");
+=======
+        try {
+          const response = await axios.post("http://localhost:3000/api/v1/register", formData);
+          toast.success("Registration successful");
+          navigate("/login");
+        } catch (err) {
+          toast.error("Error: " + err.response?.data?.msg || "Something went wrong");
+        }
+      } else {
+        toast.error("Passwords don't match");
+      }
+    } else {
+      toast.error("Please fill all inputs");
+>>>>>>> Stashed changes
 =======
         try {
           const response = await axios.post("http://localhost:3000/api/v1/register", formData);

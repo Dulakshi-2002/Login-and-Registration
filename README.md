@@ -84,5 +84,13 @@ http://localhost:5173
 ```
 Here, you can register a new account or log in using existing credentials.
 
+![Image](https://github.com/user-attachments/assets/5c4f60eb-8c28-48a1-aaa6-027d483bf7c3)
 
+![Image](https://github.com/user-attachments/assets/b3774c93-928f-4adf-8823-80d2c117cae6)
+
+![Image](https://github.com/user-attachments/assets/57f70c67-e136-41f1-b064-f55012ed16bb)
+
+![Image](https://github.com/user-attachments/assets/bda8f3aa-b768-4192-a265-ecc5b99c5da6)
+
+![Image](https://github.com/user-attachments/assets/a4cc7fd4-25c2-45d4-b0d5-bf7238025aa3)
 
